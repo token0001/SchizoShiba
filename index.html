@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>SchizoShiba - The Truth Is Out There</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/solana-web3.js/1.32.0/solana-web3.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            background: linear-gradient(45deg, #000, #1a002e);
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 5vh;
+            box-shadow: 0 4px 20px rgba(255, 0, 79, 0.9);
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .glitch-text {
+            font-size: 1.8em;
+            color: #ff004f;
+            text-shadow: 0 0 15px #ff004f, 0 0 30px #ff004f;
+            animation: glitch 0.8s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(3px, 0); }
+            25% { transform: translate(-3px, 3px); }
+            50% { transform: translate(3px, -3px); }
+            75% { transform: translate(-3px, 0); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        button {
+            background: #ff004f;
+            border: none;
+            padding: 15px 25px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        button:hover {
+            background: #ff6600;
+            transform: scale(1.15);
+        }
+        
+        .roadmap {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 20px rgba(255, 0, 79, 0.7);
+            text-align: left;
+        }
+
+        .roadmap h2 {
+            text-align: center;
+            color: #ff004f;
+            text-shadow: 0 0 10px #ff004f;
+        }
+
+        .roadmap ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .roadmap li {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(50, 50, 50, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 0, 79, 0.5);
+            transition: transform 0.3s;
+        }
+        
+        .roadmap li:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="glitch-text">"You can't trust anyone... except SchizoShiba."</div>
+    <div class="container">
+        <h1 class="glitch-text">SchizoShiba</h1>
+        <p>"Everyone lies to you. But SchizoShiba knows everything. He hears the voices. And they say it's YOUR time."</p>
+        <button id="connectWallet">Connect Phantom</button>
+        <p id="walletStatus">Not connected</p>
+        <button id="buyPumpFun">Buy on Pump.fun</button>
+        <div class="social-links">
+            <a href="https://x.com/schizo_shiba">🐦 Twitter</a>
+            <a href="https://t.me/SchizoShibaOficial">📢 Telegram</a>
+            <a href="#">🌐 Website</a>
+        </div>
+    </div>
+    
+    <div class="roadmap">
+        <h2>🚀 Roadmap</h2>
+        <ul>
+            <li><strong>Phase 1:</strong> Token launch, community creation, and first partnerships.</li>
+            <li><strong>Phase 2:</strong> Website development and viral marketing.</li>
+            <li><strong>Phase 3:</strong> DEX listing and collaborations with influencers.</li>
+            <li><strong>Phase 4:</strong> Ecosystem expansion and new features.</li>
+        </ul>
+    </div>
+    
+    <div class="footer">&copy; 2025 SchizoShiba. All rights reserved.</div>
+    
+    <script>
+        document.getElementById("connectWallet").addEventListener("click", async function() {
+            if (window.solana && window.solana.isPhantom) {
+                try {
+                    const response = await window.solana.connect();
+                    document.getElementById("walletStatus").innerText = `Connected: ${response.publicKey.toString()}`;
+                } catch (err) {
+                    console.error("Error connecting to Phantom", err);
+                }
+            } else {
+                alert("Install Phantom wallet to connect");
+            }
+        });
+        
+        document.getElementById("buyPumpFun").addEventListener("click", function() {
+            window.open("https://pump.fun/coin/A9P19uut2uy3RXECHaiJpzVrA63ZJXuwe1p24qGbpump", "_blank");
+        });
+    </script>
+</body>
+</html>
